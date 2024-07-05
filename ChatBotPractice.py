@@ -38,7 +38,7 @@ custom_css = """
 }
 
 .title {
-    color:  #000066;
+    font-color:  #000066;
     font-size: 30px;  /* Larger font size */
     font-weight: bold;
     margin-bottom : -35px;
