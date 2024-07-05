@@ -101,7 +101,7 @@ def gather_user_information(country, city, product, brand, budget, client):
 
 # Streamlit UI components
 st.markdown("""
-<div style="background-color: #FFF2D7; text-align: center; padding: 10px;border-radius : 5px">
+<div style="background-color: #003366; text-align: center; padding: 10px;border-radius : 5px">
   <h1 style="color: #002C54; font-size: 70px; margin-bottom: -40px;">Volund</h1>
   <h2 style="color: #002C54; font-size: 20px; margin-top: 5px;">An AI chatbot</h2>
 </div>
