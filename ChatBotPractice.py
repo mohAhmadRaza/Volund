@@ -27,7 +27,7 @@ custom_css = """
 }
 
 .initial-message {
-    color:  white;
+    color:  black;
     padding: 5px;  /* Padding around the content */
     font-size: 17px;  /* Larger font size */
     line-height: 1.5;  /* Slightly increased line height for readability */
