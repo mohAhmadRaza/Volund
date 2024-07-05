@@ -74,10 +74,6 @@ def initial_message():
     return "Hi, I am Volund. Your AI Partner to help make an informed decision to buy anything. Let's get to know you a bit before looking into your product."
 
 
-# Define the URL you want the button to link to
-st.sidebar.link_button("Contact Us", "sktfscm21557034@gmail.com")
-
-
 def gather_user_information(country, city, product, brand, budget, client):
     user_input = ", ".join([country, city, product, brand, budget])
 
