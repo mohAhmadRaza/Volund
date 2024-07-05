@@ -89,11 +89,7 @@ def gather_user_information(country, city, product, brand, budget, client):
         response = chat.send_message(prompt)
 
         # Extract and return the response text from the first candidate
-        if hasattr(response.candidates[0], 'text'):
-            return response.candidates[0].text
-        else:
-            return "No valid response from the model."
-
+        return response.candidates[0]
 
 # Streamlit UI components
 st.markdown("""
