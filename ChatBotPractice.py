@@ -75,11 +75,7 @@ def initial_message():
 
 
 # Define the URL you want the button to link to
-url = "sktfscm21557034@gmail.com"
-
-# Display the button
-if st.sidebar.button("Contact Us"):
-    st.markdown(f'<meta http-equiv="refresh" content="0;style="background-color: #007bff; color:padding: 10px 20px; border: none; white; url={url}">', unsafe_allow_html=True)
+st.sidebar.link_button("Contact Us", "sktfscm21557034@gmail.com")
 
 
 def gather_user_information(country, city, product, brand, budget, client):
