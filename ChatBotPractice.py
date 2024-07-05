@@ -22,7 +22,7 @@ custom_css = """
 }
 
 .faq-answer {
-    font-color : black;
+    font-color : #000066;
     font-size: 16px;
     line-height: 1.5;
 }
