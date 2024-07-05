@@ -55,7 +55,8 @@ custom_css = """
 st.markdown(custom_css, unsafe_allow_html=True)
 
 # Add FAQ section to sidebar
-st.sidebar.markdown(f"<div class='title'>{"FAQs"}", unsafe_allow_html=True)
+f = "FAQs"
+st.sidebar.markdown(f"<div class='title'>{f}", unsafe_allow_html=True)
 
 # Create a select box or list of FAQ questions
 selected_faq = st.sidebar.selectbox(" ", list(faqs.keys()))
