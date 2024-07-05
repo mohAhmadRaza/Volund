@@ -15,13 +15,14 @@ faqs = {
 custom_css = """
 <style>
 .faq-container {
-    background-color: black;
+    background-color: white;
     padding: 20px;
     margin-bottom: 10px;
     border-radius: 5px;
 }
 
 .faq-answer {
+    font-color : black;
     font-size: 16px;
     line-height: 1.5;
 }
