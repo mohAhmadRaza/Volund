@@ -239,18 +239,19 @@ if st.button("Continue"):
 
         response = gather_user_information(country, city, product, brand, budget, client)
         st.success("Thanks For Input, We Are Proceeding!")
-        if response:
-            # Process response to ensure links are clickable
-            response_lines = response.split('\n')
-            processed_response = ""
-            for line in response_lines:
-                if "Link:" in line:
-                    parts = line.split("Link: ")
-                    processed_response += f"{parts[0]}Link: [{parts[1]}]({parts[1]})\n"
-                else:
-                    processed_response += line + "\n"
+        st.markdown(response)
+        # if response:
+        #     # Process response to ensure links are clickable
+        #     response_lines = response.split('\n')
+        #     processed_response = ""
+        #     for line in response_lines:
+        #         if "Link:" in line:
+        #             parts = line.split("Link: ")
+        #             processed_response += f"{parts[0]}Link: [{parts[1]}]({parts[1]})\n"
+        #         else:
+        #             processed_response += line + "\n"
 
-            # Display the processed response
-            st.markdown(processed_response)
+        #     # Display the processed response
+        #     st.markdown(processed_response)
     else:
         st.info("Please fill in all the fields")
