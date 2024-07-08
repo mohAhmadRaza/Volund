@@ -74,7 +74,7 @@ def initial_message():
     return "Hi, I am Volund. Your AI Partner to help make an informed decision to buy anything. Let's get to know you a bit before looking into your product."
 
 
-def gather_user_information(country, city, product, brand, budget, client):
+def gather_user_information(country, city, product, brand, budget):
     user_input = ", ".join([country, city, product, brand, budget])
 
     genai.configure(api_key="AIzaSyBMdy2zJXC27XkGnGKm4iE3rFbW-u_0aSI")
@@ -233,7 +233,7 @@ budget = st.selectbox("What is your budget?", ["$0 - $50",
 
 if st.button("Continue"):
     if country.strip() and city.strip() and product.strip() and budget.strip():
-        response = gather_user_information(country, city, product, brand, budget, client)
+        response = gather_user_information(country, city, product, brand, budget)
         st.success("Thanks For Input, We Are Proceeding!")
         st.markdown(response)
         # if response:
