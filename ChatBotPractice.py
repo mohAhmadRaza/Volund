@@ -89,15 +89,18 @@ def gather_user_information(country, city, product, brand, budget):
     Format the response in a descriptive, list-based format with clear and clickable hyperlinks.
     """
     
-    # Send your prompt to OpenAI
-    response = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt=prompt,
+    # Send your prompt to OpenAI using the ChatCompletion API
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt}
+        ],
         max_tokens=150
     )
 
     # Extract and return the response text
-    return response.choices[0].text.strip()
+    return response.choices[0].message['content'].strip()
 
 # Streamlit UI components
 st.markdown("""
