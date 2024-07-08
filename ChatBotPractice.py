@@ -92,7 +92,7 @@ def gather_user_information(country, city, product, brand, budget):
     """
     
     # Send your prompt to OpenAI using the ChatCompletion API
-    response = = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": prompt}])
+    response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": prompt}])
 
 
     # Extract and return the response text
