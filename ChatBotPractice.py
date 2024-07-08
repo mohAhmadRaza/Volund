@@ -1,4 +1,4 @@
-from gemini_ng import GeminiClient
+from google.generativeai as genai
 import time
 import streamlit as st
 
@@ -77,19 +77,18 @@ def initial_message():
 def gather_user_information(country, city, product, brand, budget, client):
     user_input = ", ".join([country, city, product, brand, budget])
 
-    # Start a chat session (model selection might be handled differently)
-    with client.start_chat(model="models/gemini-1.5-pro-latest") as chat:
-        prompt = f"""
-        Generate detailed fictional product information for {product} within a budget of {budget}. 
-        Include the model, price, color, posted date, and website name. Ensure results are 
-        formatted in a descriptive, list-based format with clear and clickable hyperlinks. 
-        Assume the information is from the last 2 months and within the user's budget.Format the response in a descriptive, list-based format with clear and clickable hyperlinks."""
-
-        # Send your prompt
-        response = chat.send_message(prompt)
-
-        # Extract and return the response text from the first candidate
-        return response.candidates[0]
+    genai.configure(api_key="AIzaSyBMdy2zJXC27XkGnGKm4iE3rFbW-u_0aSI")
+    prompt = f"""
+    Generate detailed fictional product information for {product} within a budget of {budget}. 
+    Include the model, price, color, posted date, and website name. Ensure results are 
+    formatted in a descriptive, list-based format with clear and clickable hyperlinks. 
+    Assume the information is from the last 2 months and within the user's budget.
+    Format the response in a descriptive, list-based format with clear and clickable hyperlinks.
+    """
+    
+    # Send the prompt and get the response
+    response = genai.generate(prompt)
+    return response['choices'][0]['text']
 
 # Streamlit UI components
 st.markdown("""
@@ -234,9 +233,6 @@ budget = st.selectbox("What is your budget?", ["$0 - $50",
 
 if st.button("Continue"):
     if country.strip() and city.strip() and product.strip() and budget.strip():
-        # Initialize GeminiClient with the API key (unchanged)
-        client = GeminiClient(api_key="AIzaSyBMdy2zJXC27XkGnGKm4iE3rFbW-u_0aSI")
-
         response = gather_user_information(country, city, product, brand, budget, client)
         st.success("Thanks For Input, We Are Proceeding!")
         st.markdown(response)
