@@ -4,7 +4,7 @@ import os
 import streamlit as st
 
 # Initialize OpenAI client and set API key from environment variable
-openai.api_key = os.environ.get("sk-proj-p9xG8EOqgDDc3qRk8kxnT3BlbkFJ7SKX5zUchJ2jIcNlicYv")
+openai.api_key = "sk-proj-p9xG8EOqgDDc3qRk8kxnT3BlbkFJ7SKX5zUchJ2jIcNlicYv"
     
 
 faqs = {
@@ -92,7 +92,7 @@ def gather_user_information(country, city, product, brand, budget):
     """
     
     # Send your prompt to OpenAI using the ChatCompletion API
-    response = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": prompt}])
+    response = openai.ChatCompletion.create(model="gpt-4o", messages=[{"role": "user", "content": prompt}])
 
 
     # Extract and return the response text
