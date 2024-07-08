@@ -1,4 +1,4 @@
-from openai
+import openai
 import time
 import os
 import streamlit as st
