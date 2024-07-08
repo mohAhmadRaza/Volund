@@ -4,7 +4,7 @@ import os
 import streamlit as st
 
 # Initialize OpenAI client and set API key from environment variable
-openai.api_key = "sk-proj-p9xG8EOqgDDc3qRk8kxnT3BlbkFJ7SKX5zUchJ2jIcNlicYv"
+openai.api_key = "sk-proj-gqeqkdWE1TayrW5m9Q0dT3BlbkFJxW3EZAv2CMF9X3DFQZ9b"
     
 
 faqs = {
@@ -91,13 +91,20 @@ def gather_user_information(country, city, product, brand, budget):
     Format the response in a descriptive, list-based format with clear and clickable hyperlinks.
     """
     
-    # Send your prompt to OpenAI using the ChatCompletion API
-    response = openai.Completion.create(model="gpt-4o", engine="text-davinci-003", messages=[{"role": "user", "content": prompt}])
+    prompt = [
+        {"role": "system",
+         "content": "Generate detailed fictional product information for {product} within a budget of {budget}. Include the model, price, color, posted date, and website name. Ensure results are formatted in a descriptive, list-based format with clear and clickable hyperlinks. Assume the information is from the last 2 months and within the user's budget.Format the response in a descriptive, list-based format with clear and clickable hyperlinks."},
+        {"role": "user", "content": user_input}
+    ]
 
+    response = openai.ChatCompletion.create(
+        model="gpt-4o",
+        messages=prompt
+    )
 
-    # Extract and return the response text
-    return response.choices[0].message.content
-
+    chatgpt_response = response["choices"][0]["message"]["content"]
+    return chatgpt_response
+    
 # Streamlit UI components
 st.markdown("""
 <div style="background-color: #000066; text-align: center; padding: 10px;border-radius : 5px">
