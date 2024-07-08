@@ -83,13 +83,6 @@ def initial_message():
 def gather_user_information(country, city, product, brand, budget):
     user_input = ", ".join([country, city, product, brand, budget])
 
-    prompt = f"""
-    Generate detailed fictional product information for {product} within a budget of {budget}. 
-    Include the model, price, color, posted date, and website name. Ensure results are 
-    formatted in a descriptive, list-based format with clear and clickable hyperlinks. 
-    Assume the information is from the last 2 months and within the user's budget.
-    Format the response in a descriptive, list-based format with clear and clickable hyperlinks.
-    """
     
     prompt = [
         {"role": "system",
@@ -101,7 +94,7 @@ def gather_user_information(country, city, product, brand, budget):
         model="gpt-4o",
         messages=prompt
     )
-
+    
     chatgpt_response = response["choices"][0]["message"]["content"]
     return chatgpt_response
     
