@@ -1,6 +1,5 @@
-import google.generativeai as genai
+import openai
 import time
-import os
 import streamlit as st
 
 faqs = {
@@ -77,10 +76,10 @@ def initial_message():
 
 def gather_user_information(country, city, product, brand, budget):
     user_input = ", ".join([country, city, product, brand, budget])
+    
     # Access your API key as an environment variable.
-    genai.configure(api_key=os.environ['AIzaSyBMdy2zJXC27XkGnGKm4iE3rFbW-u_0aSI'])
-    # Choose a model that's appropriate for your use case.
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    openai.api_key = "sk-proj-p9xG8EOqgDDc3qRk8kxnT3BlbkFJ7SKX5zUchJ2jIcNlicYv"
+
 
     prompt = f"""
     Generate detailed fictional product information for {product} within a budget of {budget}. 
@@ -90,9 +89,15 @@ def gather_user_information(country, city, product, brand, budget):
     Format the response in a descriptive, list-based format with clear and clickable hyperlinks.
     """
     
-    # Send the prompt and get the response
-    response = model.generate_content(prompt)
-    return response.text
+    # Send your prompt to OpenAI
+    response = openai.Completion.create(
+        engine="text-davinci-003",
+        prompt=prompt,
+        max_tokens=150
+    )
+
+    # Extract and return the response text
+    return response.choices[0].text.strip()
 
 # Streamlit UI components
 st.markdown("""
