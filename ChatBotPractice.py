@@ -1,6 +1,11 @@
-import openai
+from openai import OpenAI
 import time
+import os
 import streamlit as st
+
+client = OpenAI()
+OpenAi.api_key = os.environ["sk-proj-p9xG8EOqgDDc3qRk8kxnT3BlbkFJ7SKX5zUchJ2jIcNlicYv"]
+    
 
 faqs = {
     "What is this chatbot about?": "This chatbot is designed to assist users with information about our products and services.",
@@ -74,12 +79,9 @@ def initial_message():
     return "Hi, I am Volund. Your AI Partner to help make an informed decision to buy anything. Let's get to know you a bit before looking into your product."
 
 
+
 def gather_user_information(country, city, product, brand, budget):
     user_input = ", ".join([country, city, product, brand, budget])
-    
-    # Access your API key as an environment variable.
-    openai.api_key = "sk-proj-p9xG8EOqgDDc3qRk8kxnT3BlbkFJ7SKX5zUchJ2jIcNlicYv"
-
 
     prompt = f"""
     Generate detailed fictional product information for {product} within a budget of {budget}. 
@@ -90,17 +92,16 @@ def gather_user_information(country, city, product, brand, budget):
     """
     
     # Send your prompt to OpenAI using the ChatCompletion API
-    response = openai.ChatCompletion.create(
+    response = client.Completions.create(
         model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": prompt}
-        ],
-        max_tokens=150
+        engine="text-davinci-003",
+        temperature=0.7,
+        prompt=prompt,
+        max_tokens=150,
     )
 
     # Extract and return the response text
-    return response.choices[0].message['content'].strip()
+    return response.choices[0].text
 
 # Streamlit UI components
 st.markdown("""
