@@ -1,2 +1,2 @@
 streamlit==1.23.1
-gemini-ng
+google.generativeai
