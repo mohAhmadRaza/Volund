@@ -92,16 +92,11 @@ def gather_user_information(country, city, product, brand, budget):
     """
     
     # Send your prompt to OpenAI using the ChatCompletion API
-    response = openai.Completion.create(
-        model="gpt-3.5-turbo",
-        # engine="text-davinci-003",
-        temperature=0.7,
-        prompt=prompt,
-        max_tokens=150,
-    )
+    response = = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": prompt}])
+
 
     # Extract and return the response text
-    return response.choices[0].text.strip()
+    return response..choices[0].message.content
 
 # Streamlit UI components
 st.markdown("""
