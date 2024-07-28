@@ -4,7 +4,6 @@ import os
 import streamlit as st
 
 # Initialize OpenAI client and set API key from environment variable
-openai.api_key = "sk-proj-gqeqkdWE1TayrW5m9Q0dT3BlbkFJxW3EZAv2CMF9X3DFQZ9b"
 client = OpenAI()
  
     
@@ -250,18 +249,18 @@ if st.button("Continue"):
         response = gather_user_information(country, city, product, brand, budget)
         st.success("Thanks For Input, We Are Proceeding!")
         st.markdown(response)
-        # if response:
-        #     # Process response to ensure links are clickable
-        #     response_lines = response.split('\n')
-        #     processed_response = ""
-        #     for line in response_lines:
-        #         if "Link:" in line:
-        #             parts = line.split("Link: ")
-        #             processed_response += f"{parts[0]}Link: [{parts[1]}]({parts[1]})\n"
-        #         else:
-        #             processed_response += line + "\n"
+        if response:
+            # Process response to ensure links are clickable
+            response_lines = response.split('\n')
+            processed_response = ""
+            for line in response_lines:
+                if "Link:" in line:
+                    parts = line.split("Link: ")
+                    processed_response += f"{parts[0]}Link: [{parts[1]}]({parts[1]})\n"
+                else:
+                    processed_response += line + "\n"
 
-        #     # Display the processed response
-        #     st.markdown(processed_response)
+            # Display the processed response
+            st.markdown(processed_response)
     else:
         st.info("Please fill in all the fields")
