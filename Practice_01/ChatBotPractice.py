@@ -1,5 +1,5 @@
 import streamlit as st
-import openai
+import openai as OpenAI
 import os
 from dotenv import load_dotenv
 
