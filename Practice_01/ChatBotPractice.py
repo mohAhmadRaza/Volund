@@ -92,7 +92,7 @@ def gather_user_information(country, city, product, brand, budget):
     formatted in a descriptive, list-based format with clear and clickable hyperlinks. 
     Assume the information is from the last 2 months and within the user's budget.Format the response in a descriptive, list-based format with clear and clickable hyperlinks."""
 
-    completion = client.completions.create(
+    completion = client.completion.create(
         model="gpt-3.5-turbo-1106",
         prompt=prompt,
         max_tokens=150
